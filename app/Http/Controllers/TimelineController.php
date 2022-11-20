@@ -15,8 +15,14 @@ class TimelineController extends Controller
      */
     public function __invoke(Request $request)
     {
+        if($request->has('search')){
+            $data = Post::where('body', 'like', '%'.$request->search.'%')->withCount('comments')->get();
+        } else {
+            $data = Post::with('user')->withCount('comments')->latest('id')->get();
+        }
+
         return view('dashboard', [
-            'posts' => Post::with('user')->withCount('comments')->latest('id')->get(),
+            'posts' => $data
         ]);
     }
 }
