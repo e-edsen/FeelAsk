@@ -66,7 +66,7 @@
                             @endif
 
                             <input type="submit" value="Post"
-                                class="btn mt-2 border-none bg-blue-600 hover:bg-blue-800">
+                                class="btn mt-4 border-none bg-blue-600 hover:bg-blue-800">
                         </form>
                     </div>
                 </div>
@@ -75,7 +75,7 @@
         </div>
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 text-3xl my-3">
-            <h1>Comments</h1>
+            <h1 class="my-2">Comments</h1>
         </div>
         @foreach ($post->comments as $comment)
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">

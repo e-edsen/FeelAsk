@@ -15,10 +15,10 @@
 
     <div class="py-12 flex flex-row">
         <div class="max-w-7xl mx-3 sm:px-6 lg:px-8">
-            <div class="card w-80 bg-base-100 shadow-xl">
+            <div class="card w-80 bg-base-100 shadow-xl outline outline-1 outline-blue-500">
                 <div class="card-body p-6">
                     <a href="/profile">
-                        <h2 class="card-title font-bold mb-3">Your Profile</h2>
+                        <h2 class="card-title font-bold mb-3 text-blue-500">Your Profile</h2>
                         <div class="flex flexrow w-full items-center justify-center">
                             {{-- Avatar --}}
                             <div class="avatar">
@@ -48,8 +48,8 @@
             </div>
         </div>
         <div class="max-w-7xl w-full mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 w-86 bg-white border-b border-gray-200">
+            <div class="bg-white overflow-hidden border border-blue-500 shadow-sm sm:rounded-lg">
+                <div class="p-6 w-86 bg-white">
                     {{-- You're logged in! --}}
                     <form action="{{ route('post.store') }}" method="post">
                         @csrf
@@ -83,12 +83,12 @@
             </div>
 
             @foreach ($posts as $post)
-                <div class="card w-full my-3 bg-base-100 shadow-xl">
+                <div class="card w-full my-3 bg-base-100 shadow-xl outline outline-1 outline-blue-500">
                     <div class="card-body">
                         {{-- show profile image --}}
                         <div class="flex flex-row">
-                            <img src="https://placeimg.com/192/192/people"
-                                class="rounded-full w-10 h-10 mr-3 mt-2 justify-center items-center" />
+                            <img src={{ $post->user->profpic_url }} class="rounded-full w-10 h-10 mr-3 mt-2 justify-center items-center" />
+
 
                             <div>
                                 <h2 class="card-title">{{ $post->user->name }}
@@ -96,7 +96,7 @@
                                         ☑️
                                     @endif
                                 </h2>
-                                <span class="text-gray-400 text-sm">{{ $post->user->prodi }} - IESI -
+                                <span class="text-gray-400 text-sm">{{ $post->user->prodi }} -
                                     {{ $post->created_at->diffForHumans() }}</span>
                             </div>
                         </div>
@@ -112,57 +112,67 @@
             @endforeach
         </div>
         <div class="max-w-7xl mx-5 sm:px-6 lg:px-8">
-            <div class="card w-64 bg-base-100 shadow-xl">
-                <div class="card-body">
-                    <h2 class="card-title font-bold">Subject</h2>
+            <div class="card w-64 bg-base-100 shadow-xl outline outline-1 outline-blue-500">
+                <div class="card-body ">
+                    <h2 class="card-title font-bold text-blue-500">Subject</h2>
                     {{-- ALL --}}
-                    <div tabindex="0" class="collapse collapse-arrow border-base-300 bg-base-100 rounded-box">
-                        <div class="collapse-title text-regular font-medium">
-                            Sistem Informasi
-                        </div>
-                        <div class="collapse-content flex flex-col text-blue-500 ">
-                            <a href="/dashboard?search=iesi" class="hover:text-blue-700">IESI</a>
-                            <a href="/dashboard?search=se" class="hover:text-blue-700">SE</a>
-                            <a href="/dashboard?search=pgi" class="hover:text-blue-700">PGI</a>
-                            <a href="/dashboard?search=mrksi" class="hover:text-blue-700">MRKSI</a>
-                            <a href="/dashboard?search=papb" class="hover:text-blue-700">PAPB</a>
-                        </div>
+                    <div class="text-regular font-medium mt-4">
+                        Sistem Informasi
                     </div>
-                    <div tabindex="0" class="collapse collapse-arrow border-base-300 bg-base-100 rounded-box">
-                        <div class="collapse-title text-regular font-medium">
-                            Teknologi Informasi
-                        </div>
-                        <div class="collapse-content">
-                            <a href="/dashboard?search=mrksi">IPSI</a>
-                            <a href="/dashboard?search=mrksi">ABD</a>
-                            <a href="/dashboard?search=mrksi"></a>
-                            <a href="/dashboard?search=mrksi">MRKSI</a>
-                            <a href="/dashboard?search=mrksi">MRKSI</a>
-                        </div>
+                    <div class="flex flex-col text-blue-500 ">
+                        <a href="/dashboard?search=iesi" class="hover:text-blue-700">IESI</a>
+                        <a href="/dashboard?search=se" class="hover:text-blue-700">SE</a>
+                        <a href="/dashboard?search=pgi" class="hover:text-blue-700">PGI</a>
+                        <a href="/dashboard?search=mrksi" class="hover:text-blue-700">MRKSI</a>
+                        <a href="/dashboard?search=papb" class="hover:text-blue-700">PAPB</a>
                     </div>
-                    <div tabindex="0" class="collapse collapse-arrow border-base-300 bg-base-100 rounded-box">
-                        <div class="collapse-title text-regular font-medium">
-                            Pendidikan Teknologi Informasi
-                        </div>
-                        <div class="collapse-content">
-                            <a href="#">Link</a>
-                        </div>
+
+
+                    <div class="text-regular font-medium">
+                        Pendidikan Teknologi Informasi
                     </div>
-                    <div tabindex="0" class="collapse collapse-arrow border-base-300 bg-base-100 rounded-box">
-                        <div class="collapse-title text-regular font-medium">
-                            Teknik Komputer
-                        </div>
-                        <div class="collapse-content">
-                            <a href="#">Link</a>
-                        </div>
+                    <div class="flex flex-col text-blue-500 ">
+                        <a href="/dashboard?search=dm" class="hover:text-blue-700">Data Mining</a>
+                        <a href="/dashboard?search=ipsi" class="hover:text-blue-700">IPSI</a>
+                        <a href="/dashboard?search=dpb" class="hover:text-blue-700">DPB</a>
+                        <a href="/dashboard?search=pmpk" class="hover:text-blue-700">PMPK</a>
+                        <a href="/dashboard?search=mpsi" class="hover:text-blue-700">MPSI</a>
                     </div>
-                    <div tabindex="0" class="collapse collapse-arrow border-base-300 bg-base-100 rounded-box">
-                        <div class="collapse-title text-regular font-medium">
-                            Teknik Informatika
-                        </div>
-                        <div class="collapse-content">
-                            <a href="#">Link</a>
-                        </div>
+
+
+                    <div class="text-regular font-medium">
+                        Teknik Informatika
+                    </div>
+                    <div class="flex flex-col text-blue-500 ">
+                        <a href="/dashboard?search=psi" class="hover:text-blue-700">PSI</a>
+                        <a href="/dashboard?search=rpl" class="hover:text-blue-700">RPL</a>
+                        <a href="/dashboard?search=ppp" class="hover:text-blue-700">PPP</a>
+                        <a href="/dashboard?search=miti" class="hover:text-blue-700">MITI</a>
+                        <a href="/dashboard?search=mppi" class="hover:text-blue-700">MPPI</a>
+                    </div>
+
+
+                    <div class="text-regular font-medium">
+                        Teknik Komputer
+                    </div>
+                    <div class="flex flex-col text-blue-500 ">
+                        <a href="/dashboard?search=aokl" class="hover:text-blue-700">AOKL</a>
+                        <a href="/dashboard?search=glt" class="hover:text-blue-700">GLT</a>
+                        <a href="/dashboard?search=rel" class="hover:text-blue-700">REL</a>
+                        <a href="/dashboard?search=psi" class="hover:text-blue-700">PSI</a>
+                        <a href="/dashboard?search=sna" class="hover:text-blue-700">SNA</a>
+                    </div>
+
+
+                    <div class="text-regular font-medium">
+                        Teknologi Informasi
+                    </div>
+                    <div class="flex flex-col text-blue-500 ">
+                        <a href="/dashboard?search=abd" class="hover:text-blue-700">ABD</a>
+                        <a href="/dashboard?search=mppi" class="hover:text-blue-700">MPPI</a>
+                        <a href="/dashboard?search=mpti" class="hover:text-blue-700">MPTI</a>
+                        <a href="/dashboard?search=dm" class="hover:text-blue-700">DM</a>
+                        <a href="/dashboard?search=pit" class="hover:text-blue-700">PIT</a>
                     </div>
 
                     <div class="card-actions justify-end">

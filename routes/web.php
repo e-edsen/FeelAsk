@@ -14,7 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    if(Auth::check()){
+        return redirect('/dashboard');
+    } else {
+        return view('auth.login');
+    }
 });
 
 Route::get('/dashboard', \App\Http\Controllers\TimelineController::class)->middleware(['auth'])->name('dashboard');
