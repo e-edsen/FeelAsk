@@ -6,7 +6,31 @@ use Illuminate\Http\Request;
 
 class EditProfileController extends Controller
 {
-    public function edit(){
-        return view('profile.edit');
+    /**
+     * Handle the incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function __invoke(Request $request)
+    {
+        return view('profile');
+    }
+
+    public function update(Request $request)
+    {
+        $request -> validate([
+            'name' => 'required|min:4',
+            'prodi' => 'required',
+            'angkatan' => 'required',
+        ]);
+
+        auth()->user()->update([
+            'name' => $request->name,
+            'prodi' => $request->prodi,
+            'angkatan' => $request->angkatan,
+        ]);
+
+        return back()->with('message', 'Profile updated successfully');
     }
 }

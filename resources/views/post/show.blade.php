@@ -11,6 +11,9 @@
             <div class="card w-full my-3 bg-base-100 shadow-xl">
                 <div class="card-body">
                     <h2 class="card-title">{{ $post->user->name }}
+                    @if($post->user->is_mitra)
+                        ☑️
+                    @endif
                     <span class="text-gray-400 text-sm">{{ $post->created_at->diffForHumans() }}</span>
                     </h2>
                     <p>{{ $post->body }}</p>
@@ -58,19 +61,22 @@
                 <div class="card w-full my-3 bg-base-100 shadow-xl">
                     <div class="card-body">
                         <h2 class="card-title">{{ $comment->user->name }}
-                        <span class="text-gray-400 text-sm">{{ $comment->created_at->diffForHumans() }}</span>
+                        @if($comment->user->is_mitra)
+                            ☑️
+                        @endif
 
                         {{-- Delete Comment --}}
                         @if($comment->user_id == Auth::user()->id || $post->user_id == Auth::user()->id)
                             <form action="{{ route('post.comment.destroy', [$comment->post, $comment]) }}" method="post">
                                 @csrf
                                 @method('delete')
-                                <input type="submit" value="Delete" class="btn btn-error text-white">
+                                <input type="submit" value="Delete" class="btn btn-error btn-sm text-white">
                             </form>
                         @endif
 
                         </h2>
-                        <p>{{ $comment->body }}</p>
+                        <span class="text-gray-400 text-sm">{{ $comment->created_at->diffForHumans() }}</span>
+                        <p class="mt-2">{{ $comment->body }}</p>
                     </div>
                 </div>
             </div>

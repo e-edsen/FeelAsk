@@ -1,34 +1,41 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        {{-- <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Timeline') }}
-        </h2>
+        </h2> --}}
     </x-slot>
 
     <div class="py-12 flex flex-row">
         <div class="max-w-7xl mx-3 sm:px-6 lg:px-8">
             <div class="card w-80 bg-base-100 shadow-xl">
                 <div class="card-body p-6">
-                    <h2 class="card-title font-bold">Your Profile</h2>
-                    <div class="flex flexrow w-full items-center justify-center">
-                        {{-- Avatar --}}
-                        <div class="avatar">
-                            <div class="w-24 rounded-full">
-                                <img src="https://placeimg.com/192/192/people" />
+                    <a href="/profile">
+                        <h2 class="card-title font-bold mb-3">Your Profile</h2>
+                        <div class="flex flexrow w-full items-center justify-center">
+                            {{-- Avatar --}}
+                            <div class="avatar">
+                                <div class="w-24 rounded-full">
+                                    <img src="https://placeimg.com/192/192/people" />
+                                </div>
+                            </div>
+
+                            {{-- User Info --}}
+                            <div class="mx-3 w-full">
+
+                                <h1 class="font-bold">{{ Auth::user()->name }}
+                                @if(Auth::user()->is_mitra)
+                                    ☑️
+                                @endif
+                                </h1>
+                                <h1>{{ Auth::user()->prodi }}</h1>
+                                <h1>{{ Auth::user()->angkatan }}</h1>
+
+                                @if(!Auth::user()->prodi || !Auth::user()->angkatan)
+                                <a class="text-red-500" href="/profile">Lengkapi Profilmu!</a>
+                                @endif
                             </div>
                         </div>
-
-                        {{-- User Info --}}
-                        <div class="mx-3 w-full">
-                            <h1 class="font-bold">{{ Auth::user()->name }}</h1>
-                            <h1>{{ Auth::user()->prodi }}</h1>
-                            <h1>{{ Auth::user()->angkatan }}</h1>
-
-                            @if(!Auth::user()->prodi || !Auth::user()->angkatan)
-                            <a class="text-red-500" href="/dashboard">Lengkapi Profilmu!</a>
-                            @endif
-                        </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -70,8 +77,11 @@
 
                         <div>
                             <h2 class="card-title">{{ $post->user->name }}
+                            @if($post->user->is_mitra)
+                                ☑️
+                            @endif
                             </h2>
-                            <span class="text-gray-400 text-sm">Sistem Informasi - IESI - {{ $post->created_at->diffForHumans() }}</span>
+                            <span class="text-gray-400 text-sm">{{ $post->user->prodi }} - IESI - {{ $post->created_at->diffForHumans() }}</span>
                         </div>
                     </div>
                     <p>{{ $post->body }}</p>

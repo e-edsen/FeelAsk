@@ -25,6 +25,6 @@ Route::delete('/post/{post}/comment/{comment}', \App\Http\Controllers\Post\Delet
 
 // Edit Profile
 Route::get('/profile', \App\Http\Controllers\EditProfileController::class)->name('profile.edit');
-Route::put('/profile/update', \App\Http\Controllers\EditProfileController::class)->name('profile.update');
+Route::put('update', [\App\Http\Controllers\EditProfileController::class, 'update'])->name('profile.update');
 
 require __DIR__.'/auth.php';
