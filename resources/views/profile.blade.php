@@ -65,7 +65,7 @@
                             {{-- Edit Prodi --}}
                             <h1 class="items-center mr-5 justify-center">Program Studi</h1>
                             <select name="prodi" type="text" class="select select-info w-full max-w-xs">
-                                <option disabled selected>{{ old('prodi', Auth::user()->prodi) }}</option>
+                                <option selected class="text-gray-400">{{ old('prodi', Auth::user()->prodi) }}</option>
                                 <option>Sistem Informasi</option>
                                 <option>Teknologi Informasi</option>
                                 <option>Pendidikan Teknologi Informasi</option>
@@ -80,7 +80,7 @@
                             {{-- Edit Angkatan --}}
                             <h1 class="items-center mr-5 justify-center">Angkatan</h1>
                             <select name="angkatan" type="text" class="select select-info w-full max-w-xs">
-                                <option disabled selected>{{ old('angkatan', Auth::user()->angkatan) }}</option>
+                                <option selected class="text-gray-500">{{ old('angkatan', Auth::user()->angkatan) }}</option>
                                 <option>2022</option>
                                 <option>2021</option>
                                 <option>2020</option>
@@ -88,7 +88,7 @@
                                 <option>2018</option>
                                 <option>2017</option>
                             </select>
-                            @error('prodi')
+                            @error('angkatan')
                                 <span class="text-red-500 text-xs">{{ $message }}</span>
                             @enderror
                         </div>
