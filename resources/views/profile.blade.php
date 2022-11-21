@@ -14,7 +14,7 @@
                         {{-- Avatar --}}
                         <div class="avatar">
                             <div class="w-24 rounded-full">
-                                <img src="https://placeimg.com/192/192/people" />
+                                <img src="{{ Auth::user()->profpic_url }}" />
                             </div>
                         </div>
 
@@ -53,6 +53,13 @@
                             @error('name')
                                 <span class="text-red-500 text-xs">{{ $message }}</span>
                             @enderror
+
+                            {{--Edit Profpic --}}
+                            <h1 class="items-center mr-5 justify-center mt-3">Link Foto Profil</h1>
+                            <input name="profpic_url" type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" value="{{ old('name', Auth::user()->profpic_url) }}" />
+                            @error('name')
+                                <span class="text-red-500 text-xs">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div class="flex flex-col mt-3">
                             {{-- Edit Prodi --}}
@@ -85,7 +92,7 @@
                                 <span class="text-red-500 text-xs">{{ $message }}</span>
                             @enderror
                         </div>
-                        <input type="submit" value="Update" class='btn btn-primary mt-5'></input>
+                        <input type="submit" value="Update" class='btn bg-orange-400 hover:bg-orange-500 outline-none border-none mt-5'></input>
                     </form>
                 </div>
             </div>

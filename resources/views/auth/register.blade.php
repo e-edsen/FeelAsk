@@ -2,13 +2,17 @@
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                <img src="/images/feelask-logo.png" alt="logo" class="h-20">
             </a>
+
         </x-slot>
 
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
+        <div class="mb-12">
+            <h1 class="text-4xl font-extrabold text-blue-600">Create New Account.</h1>
+            <h1 class="text-lg font-medium text-blue-600">Start for free with FeelAsk!</h1>
+        </div>
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
@@ -45,14 +49,14 @@
                                 name="password_confirmation" required />
             </div>
 
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
+            <div class="flex flex-col items-center justify-end mt-4">
+                <button class="btn bg-orange-400 hover:bg-orange-500 border-none w-full mb-5">
+                    {{ __('Register') }}
+                </button>
+                <a class="underline text-sm text-gray-600 hover:text-gray-900 justify-start items-start mb-4" href="{{ route('login') }}">
                     {{ __('Already registered?') }}
                 </a>
 
-                <x-button class="ml-4">
-                    {{ __('Register') }}
-                </x-button>
             </div>
         </form>
     </x-auth-card>

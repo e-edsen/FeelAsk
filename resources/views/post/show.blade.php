@@ -11,7 +11,7 @@
             <div class="card w-full my-3 bg-base-100 shadow-xl">
                 <div class="card-body">
                     <div class="flex flex-row">
-                        <img src="https://placeimg.com/192/192/people"
+                        <img src="{{ $post->user->profpic_url }}"
                             class="rounded-full w-10 h-10 mr-3 mt-2 justify-center items-center" />
 
                         <div>
@@ -20,7 +20,7 @@
                                     ☑️
                                 @endif
                             </h2>
-                            <span class="text-gray-400 text-sm">{{ $post->user->prodi }} - IESI -
+                            <span class="text-gray-400 text-sm">{{ $post->user->prodi }} -
                                 {{ $post->created_at->diffForHumans() }}</span>
                         </div>
                     </div>
@@ -66,7 +66,7 @@
                             @endif
 
                             <input type="submit" value="Post"
-                                class="btn mt-4 border-none bg-blue-600 hover:bg-blue-800">
+                                class="btn mt-4 border-none bg-orange-400 hover:bg-orange-500">
                         </form>
                     </div>
                 </div>
@@ -81,23 +81,34 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="card w-full my-3 bg-base-100 shadow-xl">
                     <div class="card-body">
-                        <h2 class="card-title">{{ $comment->user->name }}
-                            @if ($comment->user->is_mitra)
-                                ☑️
-                            @endif
+                        <div class="flex flex-row">
+                            <div>
+                                <img src="{{ $comment->user->profpic_url }}"
+                                    class="rounded-full w-10 h-10 mr-3 mt-2 justify-center items-center" />
+                            </div>
+                            <div class="flex flex-col">
 
-                            {{-- Delete Comment --}}
-                            @if ($comment->user_id == Auth::user()->id || $post->user_id == Auth::user()->id)
-                                <form action="{{ route('post.comment.destroy', [$comment->post, $comment]) }}"
-                                    method="post">
-                                    @csrf
-                                    @method('delete')
-                                    <input type="submit" value="Delete" class="btn btn-error btn-sm text-white">
-                                </form>
-                            @endif
+                            <h2 class="card-title">{{ $comment->user->name }}
+                                @if ($comment->user->is_mitra)
+                                    ☑️
+                                @endif
 
-                        </h2>
-                        <span class="text-gray-400 text-sm">{{ $comment->created_at->diffForHumans() }}</span>
+                                {{-- Delete Comment --}}
+                                @if ($comment->user_id == Auth::user()->id || $post->user_id == Auth::user()->id)
+                                    <form action="{{ route('post.comment.destroy', [$comment->post, $comment]) }}"
+                                        method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <input type="submit" value="Delete" class="btn btn-error btn-sm text-white">
+                                    </form>
+                                @endif
+
+                            </h2>
+
+                                <span class="text-gray-400 text-sm">{{ $comment->user->prodi }} -
+                                {{ $comment->created_at->diffForHumans() }}</span>
+                            </div>
+                        </div>
                         <p class="mt-2">{{ $comment->body }}</p>
                     </div>
                 </div>

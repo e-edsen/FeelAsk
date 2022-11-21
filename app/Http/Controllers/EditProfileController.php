@@ -23,12 +23,14 @@ class EditProfileController extends Controller
             'name' => 'required|min:4',
             'prodi' => 'required',
             'angkatan' => 'required',
+            'profpic_url' => 'required',
         ]);
 
         auth()->user()->update([
             'name' => $request->name,
             'prodi' => $request->prodi,
             'angkatan' => $request->angkatan,
+            'profpic_url' => $request->profpic_url,
         ]);
 
         return back()->with('message', 'Profile updated successfully');

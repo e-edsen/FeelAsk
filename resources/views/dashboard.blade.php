@@ -23,7 +23,7 @@
                             {{-- Avatar --}}
                             <div class="avatar">
                                 <div class="w-24 rounded-full">
-                                    <img src="https://placeimg.com/192/192/people" />
+                                    <img src="{{ Auth::user()->profpic_url }}" />
                                 </div>
                             </div>
 
@@ -77,7 +77,7 @@
                         @endif
 
                         <input type="submit" value="Ask Now"
-                            class="btn mt-3 border-none bg-blue-600 hover:bg-blue-800">
+                            class="btn mt-3 border-none bg-orange-400 hover:bg-orange-500">
                     </form>
                 </div>
             </div>
@@ -103,7 +103,7 @@
                         <p>{{ $post->body }}</p>
                         <div class="card-actions mt-6">
                             <a href="{{ route('post.show', $post) }}"
-                                class="justify-end text-blue-600 hover:text-blue-800">Show Comment
+                                class="justify-end text-blue-600 hover:text-blue-700">Show Comment
                                 ({{ $post->comments_count }})
                             </a>
                         </div>
