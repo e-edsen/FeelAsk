@@ -50,7 +50,7 @@
             </div>
 
             <div class="flex flex-col items-center justify-end mt-4">
-                <button class="btn bg-orange-400 hover:bg-orange-500 border-none w-full mb-5">
+                <button class="btn bg-orange-400 hover:bg-orange-500 border-none text-whiteg w-full mb-5">
                     {{ __('Register') }}
                 </button>
                 <a class="underline text-sm text-gray-600 hover:text-gray-900 justify-start items-start mb-4" href="{{ route('login') }}">
