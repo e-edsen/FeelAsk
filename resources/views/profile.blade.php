@@ -56,7 +56,7 @@
 
                             {{--Edit Profpic --}}
                             <h1 class="items-center mr-5 justify-center mt-3">Link Foto Profil</h1>
-                            <input name="profpic_url" type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" value="{{ old('name', Auth::user()->profpic_url) }}" />
+                            <input name="profpic_url" type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" value="{{ old('profipic_url', Auth::user()->profpic_url) }}" />
                             @error('name')
                                 <span class="text-red-500 text-xs">{{ $message }}</span>
                             @enderror
@@ -65,7 +65,7 @@
                             {{-- Edit Prodi --}}
                             <h1 class="items-center mr-5 justify-center">Program Studi</h1>
                             <select name="prodi" type="text" class="select select-info w-full max-w-xs">
-                                <option disabled selected>Pilih Program Studi</option>
+                                <option disabled selected>{{ old('prodi', Auth::user()->prodi) }}</option>
                                 <option>Sistem Informasi</option>
                                 <option>Teknologi Informasi</option>
                                 <option>Pendidikan Teknologi Informasi</option>
@@ -80,7 +80,7 @@
                             {{-- Edit Angkatan --}}
                             <h1 class="items-center mr-5 justify-center">Angkatan</h1>
                             <select name="angkatan" type="text" class="select select-info w-full max-w-xs">
-                                <option disabled selected>Angkatan</option>
+                                <option disabled selected>{{ old('angkatan', Auth::user()->angkatan) }}</option>
                                 <option>2022</option>
                                 <option>2021</option>
                                 <option>2020</option>
