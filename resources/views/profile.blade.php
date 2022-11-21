@@ -57,7 +57,7 @@
                             {{--Edit Profpic --}}
                             <h1 class="items-center mr-5 justify-center mt-3">Link Foto Profil</h1>
                             <input name="profpic_url" type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" value="{{ old('profipic_url', Auth::user()->profpic_url) }}" />
-                            @error('name')
+                            @error('profpic_url')
                                 <span class="text-red-500 text-xs">{{ $message }}</span>
                             @enderror
                         </div>
